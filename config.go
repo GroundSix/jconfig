@@ -13,7 +13,6 @@
  * @author Patrick Crosby <twitter.com/stat_hat>
  */
 
-The jconfig package provides a simple, basic configuration file parser using JSON.
 package jconfig
 
 import (
