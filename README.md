@@ -1,6 +1,8 @@
 jconfig
 =======
 
+[![Build Status](https://travis-ci.org/GroundSix/jconfig.svg?branch=master)](https://travis-ci.org/GroundSix/jconfig)
+
 This is a Go package to parse a configuration file using JSON.
 
 It's really simple and does nothing fancy.  We wouldn't have bothered releasing it
