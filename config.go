@@ -89,7 +89,13 @@ func (c *Config) parse() error {
     return nil
 }
 
-// Returns a string for the config variable key
+/**
+ * Returns a string for the config variable key
+ * 
+ * @param string JSON key
+ *
+ * @return string JSON value
+ */
 func (c *Config) GetString(key string) string {
     result, present := c.data[key]
     if !present {
@@ -98,7 +104,13 @@ func (c *Config) GetString(key string) string {
     return result.(string)
 }
 
-// Returns an int for the config variable key
+/**
+ * Returns an int for the config variable key
+ * 
+ * @param string JSON key
+ *
+ * @return int|float64 JSON value
+ */
 func (c *Config) GetInt(key string) int {
     x, ok := c.data[key]
     if !ok {
@@ -107,7 +119,13 @@ func (c *Config) GetInt(key string) int {
     return int(x.(float64))
 }
 
-// Returns a float for the config variable key
+/**
+ * Returns a float64 for the config variable key
+ * 
+ * @param string JSON key
+ *
+ * @return float64 JSON value
+ */
 func (c *Config) GetFloat(key string) float64 {
     x, ok := c.data[key]
     if !ok {
@@ -116,7 +134,13 @@ func (c *Config) GetFloat(key string) float64 {
     return x.(float64)
 }
 
-// Returns a bool for the config variable key
+/**
+ * Returns a bool for the config variable key
+ * 
+ * @param string JSON key
+ *
+ * @return bool JSON value
+ */
 func (c *Config) GetBool(key string) bool {
     x, ok := c.data[key]
     if !ok {
@@ -125,7 +149,13 @@ func (c *Config) GetBool(key string) bool {
     return x.(bool)
 }
 
-// Returns an array for the config variable key
+/**
+ * Returns a array for the config variable key
+ * 
+ * @param string JSON key
+ *
+ * @return array JSON value
+ */
 func (c *Config) GetArray(key string) []interface{} {
     result, present := c.data[key]
     if !present {
