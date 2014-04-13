@@ -5,35 +5,64 @@ jconfig
 
 This is a Go package to parse a configuration file using JSON.
 
-It's really simple and does nothing fancy.  We wouldn't have bothered releasing it
-except that a few other projects we will be releasing depend on it.
+It was ogirinally developed by [Stathat](https://github.com/stathat/jconfig) but we
+are maintaining a fork of it here due to it being a dependency to other projects
+me maintain.
 
 ### Installation
 
-Use `go install`:
-
 ```bash
-$ go install github.com/stathat/jconfig
-```
-
-If you are building your code with `goinstall`, you can skip the previous step and just
-import `jconfig` as follows:
-
-```go
-import (
-	"github.com/stathat/jconfig"
-)
+$ go get github.com/stathat/jconfig
 ```
 
 ### Usage
 
-Examples available at [www.stathat.com/src/jconfig](http://www.stathat.com/src/jconfig).
+```go
+import (
+    "github.com/groundsix/jconfig"
+)
+```
 
-### Contact us
+#### Example
 
-We'd love to hear from you if you are using this in your projects!  Please drop us a
-line: [@stat_hat](http://twitter.com/stat_hat) or [contact us here](http://www.stathat.com/docs/contact).
+Here is our example JSON file:
+
+```json
+{
+    "name" : "Harry",
+    "age"  : 22,
+    "pets" : ["Dog", "Cat"]
+}
+```
+
+And to make use of this data:
+
+```go
+package main
+
+import (
+    "fmt"
+    "github.com/groundsix/jconfig"
+)
+
+func main() {
+    config := jconfig.LoadConfig("path/to/your/config.json")
+
+    name := config.GetString("name")
+    age  := config.GetInt("age")
+    pets := config.GetArray("pets")
+
+    fmt.Println(pets[0]) // Dog
+}
+```
+
+See `config.go` for full API and types that can be pulled from
+your config file.
 
 ### About
 
-Written by Patrick Crosby at [StatHat](http://www.stathat.com).  Twitter:  [@stat_hat](http://twitter.com/stat_hat)
+Originally written by Patrick Crosby at [StatHat](http://www.stathat.com).
+[(@stat_hat)](http://twitter.com/stat_hat)
+
+Fork currently being maintained by [Ground Six](http://groundsix.com)
+[(@groundsix)](http://twitter.com/groundsix)
