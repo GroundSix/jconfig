@@ -2,6 +2,7 @@ jconfig
 =======
 
 [![Build Status](https://travis-ci.org/GroundSix/jconfig.svg?branch=master)](https://travis-ci.org/GroundSix/jconfig)
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/GroundSix/jconfig/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
 This is a Go package to parse a configuration file using JSON.
 
