@@ -7,7 +7,7 @@ This is a Go package to parse a configuration file using JSON.
 
 It was ogirinally developed by [Stathat](https://github.com/stathat/jconfig) but we
 are maintaining a fork of it here due to it being a dependency to other projects
-me maintain.
+we maintain.
 
 ### Installation
 
@@ -59,10 +59,20 @@ func main() {
 See `config.go` for full API and types that can be pulled from
 your config file.
 
+### Running Tests
+
+```bash
+$ make test
+```
+
 ### About
 
 Originally written by Patrick Crosby at [StatHat](http://www.stathat.com).
 [(@stat_hat)](http://twitter.com/stat_hat)
 
-Fork currently being maintained by [Ground Six](http://groundsix.com)
+Fork currently being maintained by [Ground Six](http://groundsix.com).
 [(@groundsix)](http://twitter.com/groundsix)
+
+### License
+
+[MIT](https://github.com/GroundSix/jconfig/blob/master/LICENSE)
