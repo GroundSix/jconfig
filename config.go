@@ -163,3 +163,19 @@ func (c *Config) GetArray(key string) []interface{} {
     }
     return result.([]interface{})
 }
+
+/**
+ * Returns a string map with type interface{}
+ * values
+ *
+ * @param string JSON key
+ *
+ * @return map[string]interface{} JSON value
+ */
+func (c *Config) GetStringMap(key string) map[string]interface{} {
+    result, present := c.data[key]
+    if !present {
+        return map[string]interface{}(nil)
+    }
+    return result.(map[string]interface{})
+}
