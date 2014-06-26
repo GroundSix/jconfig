@@ -20,7 +20,10 @@ import (
     "encoding/json"
     "log"
     "os"
+    "strings"
 )
+
+var replacements map[string]string = nil
 
 type Config struct {
     data     map[string]interface{}
@@ -29,7 +32,7 @@ type Config struct {
 
 func newConfig() *Config {
     result := new(Config)
-    result.data = make(map[string]interface{})
+    result.data  = make(map[string]interface{})
     return result
 }
 
@@ -81,12 +84,28 @@ func (c *Config) parse() error {
     if err != nil {
         return err
     }
-    err = json.Unmarshal(b.Bytes(), &c.data)
+    content := executeStringReplace(b.Bytes())
+    err = json.Unmarshal(content, &c.data)
     if err != nil {
         return err
     }
 
     return nil
+}
+
+/**
+ * Loops through all replacements and
+ * modifies the JSON string
+ *
+ * @return nil
+ */
+func executeStringReplace(string_bytes []byte) []byte {
+    json_string := string(string_bytes)
+    for replace, with := range replacements {
+        json_string = strings.Replace(json_string, replace, with, -1)
+    }
+    string_bytes = []byte(json_string)
+    return string_bytes
 }
 
 /**
@@ -178,4 +197,20 @@ func (c *Config) GetStringMap(key string) map[string]interface{} {
         return map[string]interface{}(nil)
     }
     return result.(map[string]interface{})
+}
+
+/**
+ * Adds a value to the replacement map
+ * to replace all occurrences of a string
+ *
+ * @param string the string target
+ * @param string the replacement
+ *
+ * @return nil
+ */
+func AddStringReplace(replace string, with string) {
+    if replacements == nil {
+        replacements = make(map[string]string)
+    }
+    replacements[replace] = with
 }
